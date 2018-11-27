@@ -57,14 +57,54 @@
 			isa = PBXGroup;
 			children = (
 				230A564F21AD934C00D202D4 /* AppDelegate.swift */,
-				230A565121AD934C00D202D4 /* FirstViewController.swift */,
-				230A565321AD934C00D202D4 /* SecondViewController.swift */,
+				230A566721AD939400D202D4 /* Extensions */,
+				230A566621AD938A00D202D4 /* Services */,
+				230A566521AD938100D202D4 /* Model */,
+				230A566421AD937900D202D4 /* View */,
+				230A566321AD936800D202D4 /* Controller */,
 				230A565521AD934C00D202D4 /* Main.storyboard */,
 				230A565821AD934E00D202D4 /* Assets.xcassets */,
 				230A565A21AD934E00D202D4 /* LaunchScreen.storyboard */,
 				230A565D21AD934E00D202D4 /* Info.plist */,
 			);
 			path = HackChat;
+			sourceTree = "<group>";
+		};
+		230A566321AD936800D202D4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				230A565121AD934C00D202D4 /* FirstViewController.swift */,
+				230A565321AD934C00D202D4 /* SecondViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		230A566421AD937900D202D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		230A566521AD938100D202D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		230A566621AD938A00D202D4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		230A566721AD939400D202D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
