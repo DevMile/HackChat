@@ -4,6 +4,7 @@
 
 ##Project-wide
 .DS_Store
+.plist
 
 ## Build generated
 build/
