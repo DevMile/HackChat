@@ -4,7 +4,6 @@
 
 ##Project-wide
 .DS_Store
-.plist
 
 ## Build generated
 build/
@@ -53,7 +52,8 @@ playground.xcworkspace
 # Pods/
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+*.xcworkspace
+GoogleService-Info.plist
 
 # Carthage
 #
