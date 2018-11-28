@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		230A565021AD934C00D202D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A564F21AD934C00D202D4 /* AppDelegate.swift */; };
-		230A565221AD934C00D202D4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A565121AD934C00D202D4 /* FirstViewController.swift */; };
-		230A565421AD934C00D202D4 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A565321AD934C00D202D4 /* SecondViewController.swift */; };
+		230A565221AD934C00D202D4 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A565121AD934C00D202D4 /* FeedVC.swift */; };
+		230A565421AD934C00D202D4 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A565321AD934C00D202D4 /* GroupsVC.swift */; };
 		230A565721AD934C00D202D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A565521AD934C00D202D4 /* Main.storyboard */; };
 		230A565921AD934E00D202D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230A565821AD934E00D202D4 /* Assets.xcassets */; };
 		230A565C21AD934E00D202D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A565A21AD934E00D202D4 /* LaunchScreen.storyboard */; };
@@ -27,8 +27,8 @@
 		10A7A00C21E1C9D262DEA106 /* Pods-HackChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackChat/Pods-HackChat.release.xcconfig"; sourceTree = "<group>"; };
 		230A564C21AD934C00D202D4 /* HackChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		230A564F21AD934C00D202D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		230A565121AD934C00D202D4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		230A565321AD934C00D202D4 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		230A565121AD934C00D202D4 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		230A565321AD934C00D202D4 /* GroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVC.swift; sourceTree = "<group>"; };
 		230A565621AD934C00D202D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		230A565821AD934E00D202D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		230A565B21AD934E00D202D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		230A566321AD936800D202D4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				230A565121AD934C00D202D4 /* FirstViewController.swift */,
-				230A565321AD934C00D202D4 /* SecondViewController.swift */,
+				230A565121AD934C00D202D4 /* FeedVC.swift */,
+				230A565321AD934C00D202D4 /* GroupsVC.swift */,
 				236DFFB721AED51B008A1B94 /* AuthVC.swift */,
 				236DFFB921AED532008A1B94 /* LoginVC.swift */,
 			);
@@ -272,13 +272,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				236DFFB821AED51B008A1B94 /* AuthVC.swift in Sources */,
-				230A565421AD934C00D202D4 /* SecondViewController.swift in Sources */,
+				230A565421AD934C00D202D4 /* GroupsVC.swift in Sources */,
 				236DFFBA21AED532008A1B94 /* LoginVC.swift in Sources */,
 				236DFFC221AEDDF3008A1B94 /* AuthService.swift in Sources */,
 				236DFFC021AED6BC008A1B94 /* InsetTextField.swift in Sources */,
 				230A565021AD934C00D202D4 /* AppDelegate.swift in Sources */,
 				236DFFBE21AED596008A1B94 /* ShadowView.swift in Sources */,
-				230A565221AD934C00D202D4 /* FirstViewController.swift in Sources */,
+				230A565221AD934C00D202D4 /* FeedVC.swift in Sources */,
 				230A566B21ADCD1B00D202D4 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
