@@ -13,13 +13,13 @@
 		230A565721AD934C00D202D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A565521AD934C00D202D4 /* Main.storyboard */; };
 		230A565921AD934E00D202D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230A565821AD934E00D202D4 /* Assets.xcassets */; };
 		230A565C21AD934E00D202D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A565A21AD934E00D202D4 /* LaunchScreen.storyboard */; };
-		230A566921AD989300D202D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 230A566821AD989300D202D4 /* GoogleService-Info.plist */; };
 		230A566B21ADCD1B00D202D4 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A566A21ADCD1B00D202D4 /* DataService.swift */; };
 		236DFFB821AED51B008A1B94 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DFFB721AED51B008A1B94 /* AuthVC.swift */; };
 		236DFFBA21AED532008A1B94 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DFFB921AED532008A1B94 /* LoginVC.swift */; };
 		236DFFBE21AED596008A1B94 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DFFBD21AED596008A1B94 /* ShadowView.swift */; };
 		236DFFC021AED6BC008A1B94 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DFFBF21AED6BC008A1B94 /* InsetTextField.swift */; };
 		236DFFC221AEDDF3008A1B94 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DFFC121AEDDF3008A1B94 /* AuthService.swift */; };
+		236DFFC421AEE6F3008A1B94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 236DFFC321AEE6F3008A1B94 /* GoogleService-Info.plist */; };
 		8B379F8F4F6ED863FD845744 /* Pods_HackChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33765D39709D6483A6FBD0BF /* Pods_HackChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,13 +33,13 @@
 		230A565821AD934E00D202D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		230A565B21AD934E00D202D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		230A565D21AD934E00D202D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		230A566821AD989300D202D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		230A566A21ADCD1B00D202D4 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		236DFFB721AED51B008A1B94 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		236DFFB921AED532008A1B94 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		236DFFBD21AED596008A1B94 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		236DFFBF21AED6BC008A1B94 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		236DFFC121AEDDF3008A1B94 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		236DFFC321AEE6F3008A1B94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33765D39709D6483A6FBD0BF /* Pods_HackChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9284807ADE9348D66B4383B8 /* Pods-HackChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackChat/Pods-HackChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +87,7 @@
 				230A565821AD934E00D202D4 /* Assets.xcassets */,
 				230A565A21AD934E00D202D4 /* LaunchScreen.storyboard */,
 				230A565D21AD934E00D202D4 /* Info.plist */,
-				230A566821AD989300D202D4 /* GoogleService-Info.plist */,
+				236DFFC321AEE6F3008A1B94 /* GoogleService-Info.plist */,
 			);
 			path = HackChat;
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				230A565C21AD934E00D202D4 /* LaunchScreen.storyboard in Resources */,
-				230A566921AD989300D202D4 /* GoogleService-Info.plist in Resources */,
+				236DFFC421AEE6F3008A1B94 /* GoogleService-Info.plist in Resources */,
 				230A565921AD934E00D202D4 /* Assets.xcassets in Resources */,
 				230A565721AD934C00D202D4 /* Main.storyboard in Resources */,
 			);
