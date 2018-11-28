@@ -15,5 +15,9 @@ class AuthVC: UIViewController {
 
     }
 
-
+    @IBAction func loginByEmailBtnPressed(_ sender: Any) {
+        let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")
+        present(loginVC!, animated: true, completion: nil)
+    }
+    
 }
