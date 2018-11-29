@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230812E421B0820400BBF41A /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230812E321B0820400BBF41A /* MeVC.swift */; };
 		230A565021AD934C00D202D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A564F21AD934C00D202D4 /* AppDelegate.swift */; };
 		230A565221AD934C00D202D4 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A565121AD934C00D202D4 /* FeedVC.swift */; };
 		230A565421AD934C00D202D4 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A565321AD934C00D202D4 /* GroupsVC.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		10A7A00C21E1C9D262DEA106 /* Pods-HackChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackChat/Pods-HackChat.release.xcconfig"; sourceTree = "<group>"; };
+		230812E321B0820400BBF41A /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		230A564C21AD934C00D202D4 /* HackChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		230A564F21AD934C00D202D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		230A565121AD934C00D202D4 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				230A565321AD934C00D202D4 /* GroupsVC.swift */,
 				236DFFB721AED51B008A1B94 /* AuthVC.swift */,
 				236DFFB921AED532008A1B94 /* LoginVC.swift */,
+				230812E321B0820400BBF41A /* MeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230812E421B0820400BBF41A /* MeVC.swift in Sources */,
 				236DFFB821AED51B008A1B94 /* AuthVC.swift in Sources */,
 				230A565421AD934C00D202D4 /* GroupsVC.swift in Sources */,
 				236DFFBA21AED532008A1B94 /* LoginVC.swift in Sources */,
