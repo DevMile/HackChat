@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Feed-->
+        <!--FeedVC-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FeedVC" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="FeedVC" customClass="FeedVC" customModule="HackChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,13 +56,56 @@
                                 <rect key="frame" x="0.0" y="85" width="375" height="533"/>
                                 <color key="backgroundColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="Q5i-Iu-iEk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="100" id="Q5i-Iu-iEk" customClass="FeedCell" customModule="HackChat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q5i-Iu-iEk" id="atl-VV-EYy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="JHN-kz-lw1">
+                                                    <rect key="frame" x="15" y="15" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="9k1-xf-Yj5"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Ltb-yh-8U4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="akQ-JF-16W">
+                                                    <rect key="frame" x="80" y="21" width="270" height="58"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user@hackchat.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvE-yF-Ryu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                                            <color key="textColor" red="0.0" green="0.74398959060000003" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="RWU-xd-Kz8">
+                                                            <rect key="frame" x="0.0" y="18" width="270" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="v2V-GX-YzL"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
+                                                            <color key="textColor" red="0.0" green="0.83970603020000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="akQ-JF-16W" secondAttribute="trailing" constant="10" id="85y-re-jjK"/>
+                                                <constraint firstItem="akQ-JF-16W" firstAttribute="leading" secondItem="JHN-kz-lw1" secondAttribute="trailing" constant="15" id="96A-UR-J8s"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="akQ-JF-16W" secondAttribute="bottom" constant="10" id="DYb-7M-9OS"/>
+                                                <constraint firstItem="akQ-JF-16W" firstAttribute="top" secondItem="atl-VV-EYy" secondAttribute="topMargin" constant="10" id="Jwv-Ch-CVk"/>
+                                                <constraint firstItem="JHN-kz-lw1" firstAttribute="leading" secondItem="atl-VV-EYy" secondAttribute="leading" constant="15" id="fhe-jU-D9l"/>
+                                                <constraint firstItem="JHN-kz-lw1" firstAttribute="top" secondItem="atl-VV-EYy" secondAttribute="top" constant="15" id="yPI-Ig-Qdz"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25882352939999997" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="contentLbl" destination="RWU-xd-Kz8" id="UOf-Xu-sha"/>
+                                            <outlet property="emailLbl" destination="PvE-yF-Ryu" id="uAt-Q7-tsg"/>
+                                            <outlet property="profileImage" destination="JHN-kz-lw1" id="fpE-w4-l0P"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -80,6 +123,9 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" image="feed-tabIcon" selectedImage="feed-tabIcon" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="tableView" destination="yE1-lz-L0V" id="qNR-dR-N7i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,10 +240,10 @@
             </objects>
             <point key="canvasLocation" x="1484" y="-704.79760119940033"/>
         </scene>
-        <!--Groups-->
+        <!--GroupsVC-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="GroupsVC" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="GroupsVC" customClass="GroupsVC" customModule="HackChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
