@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2307481B21B313E800B2DFF2 /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307481A21B313E800B2DFF2 /* CreateGroupsVC.swift */; };
+		2307481D21B3202F00B2DFF2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307481C21B3202F00B2DFF2 /* UserCell.swift */; };
 		230812E421B0820400BBF41A /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230812E321B0820400BBF41A /* MeVC.swift */; };
 		230812E621B08C1900BBF41A /* CreatePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230812E521B08C1900BBF41A /* CreatePostVC.swift */; };
 		230A565021AD934C00D202D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A564F21AD934C00D202D4 /* AppDelegate.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		10A7A00C21E1C9D262DEA106 /* Pods-HackChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackChat/Pods-HackChat.release.xcconfig"; sourceTree = "<group>"; };
+		2307481A21B313E800B2DFF2 /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
+		2307481C21B3202F00B2DFF2 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		230812E321B0820400BBF41A /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		230812E521B08C1900BBF41A /* CreatePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostVC.swift; sourceTree = "<group>"; };
 		230A564C21AD934C00D202D4 /* HackChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +115,7 @@
 				236DFFB921AED532008A1B94 /* LoginVC.swift */,
 				230812E321B0820400BBF41A /* MeVC.swift */,
 				230812E521B08C1900BBF41A /* CreatePostVC.swift */,
+				2307481A21B313E800B2DFF2 /* CreateGroupsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				236DFFBD21AED596008A1B94 /* ShadowView.swift */,
 				236DFFBF21AED6BC008A1B94 /* InsetTextField.swift */,
 				23C303B121B19BAB000B5101 /* FeedCell.swift */,
+				2307481C21B3202F00B2DFF2 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +299,8 @@
 				236DFFB821AED51B008A1B94 /* AuthVC.swift in Sources */,
 				230A565421AD934C00D202D4 /* GroupsVC.swift in Sources */,
 				236DFFBA21AED532008A1B94 /* LoginVC.swift in Sources */,
+				2307481B21B313E800B2DFF2 /* CreateGroupsVC.swift in Sources */,
+				2307481D21B3202F00B2DFF2 /* UserCell.swift in Sources */,
 				236DFFC221AEDDF3008A1B94 /* AuthService.swift in Sources */,
 				236DFFC021AED6BC008A1B94 /* InsetTextField.swift in Sources */,
 				230A565021AD934C00D202D4 /* AppDelegate.swift in Sources */,
