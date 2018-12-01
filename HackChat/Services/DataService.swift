@@ -60,4 +60,18 @@ class DataService {
         }
     }
     
+    func getUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+        let query = REF_USERS.child(uid)
+        query.observeSingleEvent(of: .value) { (userSnapshot) in
+            handler(userSnapshot.childSnapshot(forPath: "email").value as! String)
+        }
+        //        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+        //            guard let user = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
+        //            for username in user {
+        //                if username.key == uid {
+        //                    handler(username.childSnapshot(forPath: "email").value as! String)
+        //                }
+        //            }
+        //        }
+    }
 }

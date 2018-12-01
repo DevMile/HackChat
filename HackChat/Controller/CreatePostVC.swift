@@ -23,6 +23,11 @@ class CreatePostVC: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        emailLbl.text = Auth.auth().currentUser?.email
+    }
+    
     @IBAction func sendBtnPressed(_ sender: Any) {
         if textView.text != "" && textView.text != "Say something here..." {
             sendBtn.isEnabled = false
