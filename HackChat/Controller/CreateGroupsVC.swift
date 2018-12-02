@@ -46,6 +46,24 @@ class CreateGroupsVC: UIViewController {
     }
     
     @IBAction func doneBtnPressed(_ sender: Any) {
+        if addTitleTxtField.text != "" && descriptionTxtField.text != "" {
+            DataService.instance.getIds(forUsernames: chosenGroupMembers) { (returnedUserIds) in
+                var idArray = returnedUserIds
+                idArray.append((Auth.auth().currentUser?.uid)!)
+                DataService.instance.createGroup(withTitle: self.addTitleTxtField.text!, andDescription: self.descriptionTxtField.text!, forUserIds: idArray, completion: { (success) in
+                    if success {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        let errorPopup = UIAlertController(title: "Error", message: "There has been an error while creating your group. Please try again.", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel) { (buttontapped) in
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        errorPopup.addAction(cancelAction)
+                        self.present(errorPopup, animated: true, completion: nil)
+                    }
+                })
+            }
+        }
     }
     
     @IBAction func closeBtnPressed(_ sender: Any) {
