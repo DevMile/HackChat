@@ -22,7 +22,7 @@ class GroupsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DataService.instance.getAllGroups { (returnedGroupsArray) in
-            self.groupsArray = returnedGroupsArray
+            self.groupsArray = returnedGroupsArray.reversed()
             self.tableView.reloadData()
         }
     }
@@ -44,6 +44,12 @@ extension GroupsVC: UITableViewDelegate, UITableViewDataSource {
         let group = groupsArray[indexPath.row]
         cell.configureCell(title: group.title, description: group.description, membersCount: group.membersCount)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let groupFeedVC = storyboard?.instantiateViewController(withIdentifier: "GroupFeedVC") as? GroupFeedVC else {return}
+        groupFeedVC.initData(forGroup: groupsArray[indexPath.row])
+        present(groupFeedVC, animated: true, completion: nil)
     }
 }
 
