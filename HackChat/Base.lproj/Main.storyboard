@@ -407,7 +407,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-m8-1mL">
-                                <rect key="frame" x="0.0" y="134" width="375" height="533"/>
+                                <rect key="frame" x="0.0" y="134" width="375" height="473"/>
                                 <color key="backgroundColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupFeedCell" rowHeight="100" id="emX-8s-pj7" customClass="GroupFeedCell" customModule="HackChat" customModuleProvider="target">
@@ -456,7 +456,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.25882352939999997" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="contentLbl" destination="B6B-83-uEO" id="rtF-UZ-sTA"/>
                                             <outlet property="emailLbl" destination="4bp-dP-ynx" id="xSx-A0-Vy4"/>
                                             <outlet property="messageContentLbl" destination="B6B-83-uEO" id="HEG-bx-c8Y"/>
                                             <outlet property="profileImage" destination="oGy-LD-sf9" id="61k-DN-doH"/>
@@ -477,13 +476,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UY-gh-WFB">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="send a message..." textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-It-MPH" customClass="InsetTextField" customModule="HackChat" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="15" width="305" height="30"/>
-                                        <color key="backgroundColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" red="0.0" green="0.83970603020000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="233-ic-zvr">
                                         <rect key="frame" x="330" y="15" width="30" height="30"/>
                                         <constraints>
@@ -495,17 +487,21 @@
                                             <action selector="sendBtnPressed:" destination="FLd-5G-S52" eventType="touchUpInside" id="VhE-c3-zuu"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="send a message..." textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-It-MPH" customClass="InsetTextField" customModule="HackChat" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="15" width="300" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.0" green="0.83970603020000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.19733957050000001" green="0.19929342759999999" blue="0.19929342759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="iuc-It-MPH" firstAttribute="top" secondItem="5UY-gh-WFB" secondAttribute="top" constant="15" id="BbN-89-C8t"/>
-                                    <constraint firstItem="233-ic-zvr" firstAttribute="leading" secondItem="iuc-It-MPH" secondAttribute="trailing" constant="10" id="GSa-Af-bsN"/>
-                                    <constraint firstAttribute="bottom" secondItem="iuc-It-MPH" secondAttribute="bottom" constant="15" id="NVd-aj-87w"/>
+                                    <constraint firstAttribute="trailing" secondItem="233-ic-zvr" secondAttribute="trailing" constant="15" id="2IS-Ew-AnK"/>
+                                    <constraint firstItem="233-ic-zvr" firstAttribute="top" secondItem="5UY-gh-WFB" secondAttribute="top" constant="15" id="38A-He-0HB"/>
                                     <constraint firstAttribute="height" constant="60" id="UjG-pp-0wY"/>
-                                    <constraint firstItem="iuc-It-MPH" firstAttribute="leading" secondItem="5UY-gh-WFB" secondAttribute="leading" constant="15" id="Uuk-Nq-zao"/>
-                                    <constraint firstItem="233-ic-zvr" firstAttribute="top" secondItem="5UY-gh-WFB" secondAttribute="top" constant="15" id="cHk-tH-IwT"/>
-                                    <constraint firstAttribute="bottom" secondItem="233-ic-zvr" secondAttribute="bottom" constant="15" id="fgV-jx-32N"/>
-                                    <constraint firstAttribute="trailing" secondItem="233-ic-zvr" secondAttribute="trailing" constant="15" id="gXw-Gy-9Lu"/>
+                                    <constraint firstAttribute="bottom" secondItem="233-ic-zvr" secondAttribute="bottom" constant="15" id="XTy-Tc-tg3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -517,10 +513,10 @@
                             <constraint firstItem="cNN-8V-xK0" firstAttribute="leading" secondItem="1NW-8Z-795" secondAttribute="leading" id="IOi-61-WyY"/>
                             <constraint firstItem="cNN-8V-xK0" firstAttribute="top" secondItem="RFK-oe-fGQ" secondAttribute="top" id="Mr5-PP-9FX"/>
                             <constraint firstItem="EEp-m8-1mL" firstAttribute="top" secondItem="GED-vF-Dm5" secondAttribute="bottom" constant="8" id="T8d-oc-AfS"/>
+                            <constraint firstItem="5UY-gh-WFB" firstAttribute="top" secondItem="EEp-m8-1mL" secondAttribute="bottom" id="VY4-V2-iVF"/>
                             <constraint firstItem="5UY-gh-WFB" firstAttribute="trailing" secondItem="1NW-8Z-795" secondAttribute="trailing" id="Vgo-m7-gb0"/>
                             <constraint firstItem="EEp-m8-1mL" firstAttribute="trailing" secondItem="1NW-8Z-795" secondAttribute="trailing" id="XhW-sK-MNF"/>
                             <constraint firstItem="EEp-m8-1mL" firstAttribute="leading" secondItem="1NW-8Z-795" secondAttribute="leading" id="YCz-mD-6Qt"/>
-                            <constraint firstItem="EEp-m8-1mL" firstAttribute="bottom" secondItem="1NW-8Z-795" secondAttribute="bottom" id="aMG-lu-jyi"/>
                             <constraint firstItem="GED-vF-Dm5" firstAttribute="top" secondItem="cNN-8V-xK0" secondAttribute="bottom" constant="8" id="iSc-ab-DFz"/>
                             <constraint firstItem="5UY-gh-WFB" firstAttribute="leading" secondItem="1NW-8Z-795" secondAttribute="leading" id="pk5-li-KfZ"/>
                             <constraint firstItem="5UY-gh-WFB" firstAttribute="bottom" secondItem="1NW-8Z-795" secondAttribute="bottom" id="rFj-Kh-5R1"/>
