@@ -487,10 +487,12 @@
                                             <action selector="sendBtnPressed:" destination="FLd-5G-S52" eventType="touchUpInside" id="VhE-c3-zuu"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="send a message..." textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-It-MPH" customClass="InsetTextField" customModule="HackChat" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="send a message..." textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-It-MPH" customClass="InsetTextField" customModule="HackChat" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="300" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="pgo-Ts-QDs"/>
+                                        </constraints>
                                         <color key="textColor" red="0.0" green="0.83970603020000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -500,26 +502,28 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="233-ic-zvr" secondAttribute="trailing" constant="15" id="2IS-Ew-AnK"/>
                                     <constraint firstItem="233-ic-zvr" firstAttribute="top" secondItem="5UY-gh-WFB" secondAttribute="top" constant="15" id="38A-He-0HB"/>
+                                    <constraint firstItem="iuc-It-MPH" firstAttribute="leading" secondItem="5UY-gh-WFB" secondAttribute="leading" constant="15" id="4u5-WH-rKv"/>
+                                    <constraint firstItem="iuc-It-MPH" firstAttribute="top" secondItem="5UY-gh-WFB" secondAttribute="top" constant="15" id="SVp-jK-Czn"/>
                                     <constraint firstAttribute="height" constant="60" id="UjG-pp-0wY"/>
-                                    <constraint firstAttribute="bottom" secondItem="233-ic-zvr" secondAttribute="bottom" constant="15" id="XTy-Tc-tg3"/>
+                                    <constraint firstItem="233-ic-zvr" firstAttribute="leading" secondItem="iuc-It-MPH" secondAttribute="trailing" constant="15" id="nxo-xF-bIK"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.25879135727882385" green="0.2588421106338501" blue="0.25878816843032837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cNN-8V-xK0" firstAttribute="trailing" secondItem="1NW-8Z-795" secondAttribute="trailing" id="1ks-jo-C0E"/>
+                            <constraint firstAttribute="trailing" secondItem="5UY-gh-WFB" secondAttribute="trailing" id="4Gr-sF-mjA"/>
                             <constraint firstItem="1NW-8Z-795" firstAttribute="trailing" secondItem="GED-vF-Dm5" secondAttribute="trailing" constant="16" id="7eD-JN-CAg"/>
                             <constraint firstItem="GED-vF-Dm5" firstAttribute="leading" secondItem="1NW-8Z-795" secondAttribute="leading" constant="16" id="Gi8-tw-eNQ"/>
+                            <constraint firstAttribute="bottom" secondItem="5UY-gh-WFB" secondAttribute="bottom" id="HFL-75-AfZ"/>
                             <constraint firstItem="cNN-8V-xK0" firstAttribute="leading" secondItem="1NW-8Z-795" secondAttribute="leading" id="IOi-61-WyY"/>
                             <constraint firstItem="cNN-8V-xK0" firstAttribute="top" secondItem="RFK-oe-fGQ" secondAttribute="top" id="Mr5-PP-9FX"/>
                             <constraint firstItem="EEp-m8-1mL" firstAttribute="top" secondItem="GED-vF-Dm5" secondAttribute="bottom" constant="8" id="T8d-oc-AfS"/>
                             <constraint firstItem="5UY-gh-WFB" firstAttribute="top" secondItem="EEp-m8-1mL" secondAttribute="bottom" id="VY4-V2-iVF"/>
-                            <constraint firstItem="5UY-gh-WFB" firstAttribute="trailing" secondItem="1NW-8Z-795" secondAttribute="trailing" id="Vgo-m7-gb0"/>
                             <constraint firstItem="EEp-m8-1mL" firstAttribute="trailing" secondItem="1NW-8Z-795" secondAttribute="trailing" id="XhW-sK-MNF"/>
                             <constraint firstItem="EEp-m8-1mL" firstAttribute="leading" secondItem="1NW-8Z-795" secondAttribute="leading" id="YCz-mD-6Qt"/>
                             <constraint firstItem="GED-vF-Dm5" firstAttribute="top" secondItem="cNN-8V-xK0" secondAttribute="bottom" constant="8" id="iSc-ab-DFz"/>
-                            <constraint firstItem="5UY-gh-WFB" firstAttribute="leading" secondItem="1NW-8Z-795" secondAttribute="leading" id="pk5-li-KfZ"/>
-                            <constraint firstItem="5UY-gh-WFB" firstAttribute="bottom" secondItem="1NW-8Z-795" secondAttribute="bottom" id="rFj-Kh-5R1"/>
+                            <constraint firstItem="5UY-gh-WFB" firstAttribute="leading" secondItem="RFK-oe-fGQ" secondAttribute="leading" id="lYQ-6b-OMf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1NW-8Z-795"/>
                     </view>
@@ -528,6 +532,7 @@
                         <outlet property="groupTitleLbl" destination="Ud3-0q-d5C" id="TO3-l4-j9g"/>
                         <outlet property="sendBtn" destination="233-ic-zvr" id="yLb-CE-olz"/>
                         <outlet property="sendBtnView" destination="5UY-gh-WFB" id="Hjj-sD-JX1"/>
+                        <outlet property="sendBtnViewHeight" destination="UjG-pp-0wY" id="Ph6-Vk-bHU"/>
                         <outlet property="tableView" destination="EEp-m8-1mL" id="MmJ-mS-dbH"/>
                         <outlet property="textField" destination="iuc-It-MPH" id="C2K-MU-jp2"/>
                     </connections>

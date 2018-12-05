@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class GroupFeedVC: UIViewController {
+class GroupFeedVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var groupTitleLbl: UILabel!
     @IBOutlet weak var groupMembersLbl: UILabel!
@@ -17,6 +17,7 @@ class GroupFeedVC: UIViewController {
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var textField: InsetTextField!
     @IBOutlet weak var sendBtnView: UIView!
+    @IBOutlet weak var sendBtnViewHeight: NSLayoutConstraint!
     
     var group: Group?
     var messageArray = [Message]()
@@ -29,7 +30,13 @@ class GroupFeedVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        sendBtnView.bindToKeyboard()
+        textField.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
+        tableView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tableViewTapped() {
+        textField.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +74,23 @@ class GroupFeedVC: UIViewController {
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissVC()
+    }
+    
+    // animate sendBtnView
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5) {
+            // 60(viewHeight) + 258(keyboardHeight)
+            self.sendBtnViewHeight.constant = 318
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5) {
+            self.sendBtnViewHeight.constant = 60
+            self.view.layoutIfNeeded()
+        }
     }
     
 }

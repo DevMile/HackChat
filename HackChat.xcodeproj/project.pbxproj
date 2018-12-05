@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23034B4021B81B3C002E6CB8 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23034B3F21B81B3C002E6CB8 /* UIViewControllerExt.swift */; };
 		2307481B21B313E800B2DFF2 /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307481A21B313E800B2DFF2 /* CreateGroupsVC.swift */; };
 		2307481D21B3202F00B2DFF2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307481C21B3202F00B2DFF2 /* UserCell.swift */; };
 		2307B95821B6BA34005DFAF3 /* GroupFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307B95721B6BA34005DFAF3 /* GroupFeedCell.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		10A7A00C21E1C9D262DEA106 /* Pods-HackChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackChat/Pods-HackChat.release.xcconfig"; sourceTree = "<group>"; };
+		23034B3F21B81B3C002E6CB8 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		2307481A21B313E800B2DFF2 /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		2307481C21B3202F00B2DFF2 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		2307B95721B6BA34005DFAF3 /* GroupFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFeedCell.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				23C303AF21B1969F000B5101 /* UIViewExt.swift */,
+				23034B3F21B81B3C002E6CB8 /* UIViewControllerExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				230812E421B0820400BBF41A /* MeVC.swift in Sources */,
 				23B3F42921B5713000E25AFC /* GroupCell.swift in Sources */,
 				23C303B421B1ABF1000B5101 /* Message.swift in Sources */,
+				23034B4021B81B3C002E6CB8 /* UIViewControllerExt.swift in Sources */,
 				236DFFB821AED51B008A1B94 /* AuthVC.swift in Sources */,
 				2307B95A21B6BB76005DFAF3 /* GroupFeedVC.swift in Sources */,
 				2307B95821B6BA34005DFAF3 /* GroupFeedCell.swift in Sources */,
