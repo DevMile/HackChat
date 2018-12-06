@@ -776,12 +776,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQx-f1-fZU">
                                 <rect key="frame" x="0.0" y="85" width="375" height="275"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-2K-CpP">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-2K-CpP">
                                         <rect key="frame" x="137.5" y="20" width="100" height="100"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="ICx-Bo-3b7"/>
                                             <constraint firstAttribute="width" constant="100" id="aN6-GK-kIG"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="nps-Z8-fEz" appends="YES" id="SFU-gz-9kS"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@email.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGq-YX-69T">
                                         <rect key="frame" x="106" y="135" width="163" height="21"/>
@@ -837,6 +841,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDd-64-eiD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nps-Z8-fEz">
+                    <connections>
+                        <action selector="didTapProfileImg:" destination="yYY-Lo-TyO" id="LrX-Fm-WRh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1484" y="0.0"/>
         </scene>

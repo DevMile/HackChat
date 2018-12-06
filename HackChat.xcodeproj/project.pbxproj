@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2303052821B9E17A00F1A9E8 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303052721B9E17A00F1A9E8 /* UIImageViewExt.swift */; };
 		23034B4021B81B3C002E6CB8 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23034B3F21B81B3C002E6CB8 /* UIViewControllerExt.swift */; };
 		2307481B21B313E800B2DFF2 /* CreateGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307481A21B313E800B2DFF2 /* CreateGroupsVC.swift */; };
 		2307481D21B3202F00B2DFF2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307481C21B3202F00B2DFF2 /* UserCell.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		10A7A00C21E1C9D262DEA106 /* Pods-HackChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackChat/Pods-HackChat.release.xcconfig"; sourceTree = "<group>"; };
+		2303052721B9E17A00F1A9E8 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 		23034B3F21B81B3C002E6CB8 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		2307481A21B313E800B2DFF2 /* CreateGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupsVC.swift; sourceTree = "<group>"; };
 		2307481C21B3202F00B2DFF2 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				23C303AF21B1969F000B5101 /* UIViewExt.swift */,
 				23034B3F21B81B3C002E6CB8 /* UIViewControllerExt.swift */,
+				2303052721B9E17A00F1A9E8 /* UIImageViewExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				230812E621B08C1900BBF41A /* CreatePostVC.swift in Sources */,
 				236DFFBE21AED596008A1B94 /* ShadowView.swift in Sources */,
 				230A565221AD934C00D202D4 /* FeedVC.swift in Sources */,
+				2303052821B9E17A00F1A9E8 /* UIImageViewExt.swift in Sources */,
 				230A566B21ADCD1B00D202D4 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

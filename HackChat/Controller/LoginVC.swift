@@ -31,7 +31,6 @@ class LoginVC: UIViewController {
                 // if login failed - register user, then log him in
                 AuthService.instance.registerUser(withEmail: self.emailTxtField.text!, andPassword: self.passwordTxtField.text!, userCreationComplete: { (success, registerError) in
                     if success {
-                        // THIS PART NOT WORKING!
                         AuthService.instance.loginUser(withEmail: self.emailTxtField.text!, andPassword: self.passwordTxtField.text!, loginComplete: { (success, nil) in
                             self.dismiss(animated: true, completion: nil)
                             print("Successfull login!")

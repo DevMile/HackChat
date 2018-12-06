@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 let DB_BASE = Database.database().reference()
+let STORAGE = Storage.storage().reference()
 
 class DataService {
     static let instance = DataService()
@@ -18,6 +19,7 @@ class DataService {
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_GROUPS = DB_BASE.child("groups")
     private var _REF_FEED = DB_BASE.child("feed")
+    private var _REF_STORAGE = STORAGE
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -30,6 +32,10 @@ class DataService {
     }
     var REF_FEED: DatabaseReference {
         return _REF_FEED
+    }
+    
+    var REF_STORAGE: StorageReference {
+        return _REF_STORAGE
     }
     
     func createDBUser(userId: String, userData: Dictionary<String,Any>) {
@@ -154,5 +160,14 @@ class DataService {
             handler(groupsArray)
         }
     }
+    
+    func uploadProfilePicture(forUID uid: String, imageUrl: String, completion: @escaping (_ success: Bool) -> ()) {
+        REF_USERS.child(uid).child("profile_pic").setValue(imageUrl)
+        completion(true)
+    }
+    
+    // TODO: - Create get all profile pictures function and call it in MeVC viewDidLoad
+    
+    
     
 }
