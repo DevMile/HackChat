@@ -40,7 +40,7 @@ class GroupFeedVC: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         groupTitleLbl.text = group?.title
         DataService.instance.getEmailsFor(group: group!) { (returnedEmails) in
             self.groupMembersLbl.text = returnedEmails.joined(separator: ", ")
@@ -55,6 +55,8 @@ class GroupFeedVC: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
    
     @IBAction func sendBtnPressed(_ sender: Any) {
@@ -78,16 +80,15 @@ class GroupFeedVC: UIViewController, UITextFieldDelegate {
     }
     
     // animate sendBtnView
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5) {
-            // 60(viewHeight) + 258(keyboardHeight)
-            self.sendBtnViewHeight.constant = 318
-            self.view.layoutIfNeeded()
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeightSize = keyboardSize.height
+            self.sendBtnViewHeight.constant = keyboardHeightSize + 60 // height of sendBtnView
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.25) {
             self.sendBtnViewHeight.constant = 60
             self.view.layoutIfNeeded()
         }
