@@ -87,14 +87,6 @@ class DataService {
         query.observeSingleEvent(of: .value) { (userSnapshot) in
             handler(userSnapshot.childSnapshot(forPath: "email").value as! String)
         }
-        //        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
-        //            guard let user = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
-        //            for username in user {
-        //                if username.key == uid {
-        //                    handler(username.childSnapshot(forPath: "email").value as! String)
-        //                }
-        //            }
-        //        }
     }
     
     func getEmails(forSearchQuery query: String, handler: @escaping (_ emailArray: [String]) -> ()) {
@@ -165,8 +157,6 @@ class DataService {
         REF_USERS.child(uid).child("profile_pic").setValue(imageUrl)
         completion(true)
     }
-    
-    // TODO: - Create get all profile pictures function and call it in MeVC viewDidLoad
     
     
     

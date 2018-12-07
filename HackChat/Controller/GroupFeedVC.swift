@@ -18,7 +18,6 @@ class GroupFeedVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: InsetTextField!
     @IBOutlet weak var sendBtnView: UIView!
     @IBOutlet weak var sendBtnViewHeight: NSLayoutConstraint!
-    
     var group: Group?
     var messageArray = [Message]()
     
@@ -79,11 +78,13 @@ class GroupFeedVC: UIViewController, UITextFieldDelegate {
         dismissVC()
     }
     
-    // animate sendBtnView
+    // animate sendBtnView and textField to bind to keyboard
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let keyboardHeightSize = keyboardSize.height
-            self.sendBtnViewHeight.constant = keyboardHeightSize + 60 // height of sendBtnView
+            UIView.animate(withDuration: 0.25) {
+            self.sendBtnViewHeight.constant = keyboardSize.height + 60 // height of sendBtnView
+                self.view.layoutIfNeeded()
+            }
         }
     }
 
@@ -114,4 +115,6 @@ extension GroupFeedVC: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+
+
 }

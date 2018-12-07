@@ -88,29 +88,27 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
     
     // Upload image to Firebase
     func uploadImageToStorage() {
-        if Auth.auth().currentUser != nil {
-            // upload image to storage
-            let profilePicStorageRef = DataService.instance.REF_STORAGE.child("user_profiles/\(Auth.auth().currentUser!.uid)/profile_pic.jpeg")
-            if let imageData = self.profileImg.image?.jpegData(compressionQuality: 0.5) {
-                profilePicStorageRef.putData(imageData, metadata: nil) { (metadata, error) in
-                    if error == nil {
-                        profilePicStorageRef.downloadURL(completion: { (url, error) in
-                            if error != nil {
-                                print(error?.localizedDescription ?? "Error while getting download link for image.")
-                            } else {
-                                // connect image url to user
-                                DataService.instance.uploadProfilePicture(forUID: Auth.auth().currentUser!.uid, imageUrl: url!.absoluteString, completion: { (success) in
-                                    if success {
-                                        print("Success, image uploaded to Storage")
-                                    } else {
-                                        print("There was a problem with uploading image to Database!")
-                                    }
-                                })
-                            }
-                        })
-                    } else {
-                        print(error?.localizedDescription ?? "Error while uploading image to Storage.")
-                    }
+        // upload image to storage
+        let profilePicStorageRef = DataService.instance.REF_STORAGE.child("user_profiles/\(Auth.auth().currentUser!.uid)/profile_pic.jpeg")
+        if let imageData = self.profileImg.image?.jpegData(compressionQuality: 0.5) {
+            profilePicStorageRef.putData(imageData, metadata: nil) { (metadata, error) in
+                if error == nil {
+                    profilePicStorageRef.downloadURL(completion: { (url, error) in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "Error while getting download link for image.")
+                        } else {
+                            // connect image url to user
+                            DataService.instance.uploadProfilePicture(forUID: Auth.auth().currentUser!.uid, imageUrl: url!.absoluteString, completion: { (success) in
+                                if success {
+                                    print("Success, image uploaded to Storage")
+                                } else {
+                                    print("There was a problem with uploading image to Database!")
+                                }
+                            })
+                        }
+                    })
+                } else {
+                    print(error?.localizedDescription ?? "Error while uploading image to Storage.")
                 }
             }
         }
