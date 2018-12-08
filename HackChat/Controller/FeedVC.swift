@@ -8,6 +8,8 @@
 
 import UIKit
 
+let imageCache = NSCache<AnyObject, AnyObject>()
+
 class FeedVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -29,6 +31,10 @@ class FeedVC: UIViewController {
             }
         }
     }
+    
+    func showImage(fromImageUrl urlString: String) {
+        
+    }
 
 }
 
@@ -43,10 +49,27 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as? FeedCell else {return UITableViewCell()}
-        let image = UIImage(named: "defaultProfileImage")
         let message = messageArray[indexPath.row]
-        DataService.instance.getUsername(forUID: message.senderId) { (returnedUsername) in
-            cell.configureCell(profileImage: image!, email: returnedUsername, messageContent: message.content)
+        DataService.instance.getUsernameAndPhoto(forUID: message.senderId) { (returnedUsername, returnedProfilePhoto) in
+            // check cache for image first
+            if let cachedImage = imageCache.object(forKey: returnedProfilePhoto as AnyObject) as? UIImage {
+                cell.configureCell(profileImage: cachedImage, email: returnedUsername, messageContent: message.content)
+            }
+            // otherwise download images
+            let url = URL(string: returnedProfilePhoto)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        if let downloadedImage = UIImage(data: data!) {
+                            imageCache.setObject(downloadedImage, forKey: returnedProfilePhoto as AnyObject)
+                            cell.configureCell(profileImage: downloadedImage, email: returnedUsername, messageContent: message.content)
+                        }
+                    }
+                }
+                }.resume()
         }
         return cell
     }

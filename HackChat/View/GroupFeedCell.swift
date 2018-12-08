@@ -15,7 +15,7 @@ class GroupFeedCell: UITableViewCell {
     @IBOutlet weak var messageContentLbl: UILabel!
     
     func configureCell(profileImage: UIImage, emailLbl: String, messageContentLbl: String) {
-        self.profileImage.image = profileImage
+        self.profileImage.maskCircle(anyImage: profileImage)
         self.emailLbl.text = emailLbl
         self.messageContentLbl.text = messageContentLbl
     }

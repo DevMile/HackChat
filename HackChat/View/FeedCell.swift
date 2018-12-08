@@ -15,9 +15,11 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var contentLbl: UILabel!
     
     func configureCell(profileImage: UIImage, email: String, messageContent: String) {
-        self.profileImage.image = profileImage
+        self.profileImage.maskCircle(anyImage: profileImage)
         self.emailLbl.text = email
         self.contentLbl.text = messageContent
     }
+    
+    
     
 }

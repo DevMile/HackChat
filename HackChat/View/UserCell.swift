@@ -16,7 +16,7 @@ class UserCell: UITableViewCell {
     var showing = false
     
     func configureCell(profileImage image: UIImage, email: String, isSelected: Bool) {
-        self.profileImage.image = image
+        self.profileImage.maskCircle(anyImage: image)
         self.emailLbl.text = email
         if isSelected {
             self.checkmark.isHidden = false

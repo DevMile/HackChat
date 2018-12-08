@@ -18,8 +18,8 @@ class GroupFeedVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: InsetTextField!
     @IBOutlet weak var sendBtnView: UIView!
     @IBOutlet weak var sendBtnViewHeight: NSLayoutConstraint!
-    var group: Group?
     var messageArray = [Message]()
+    var group: Group?
     
     func initData(forGroup group: Group) {
         self.group = group
@@ -108,10 +108,27 @@ extension GroupFeedVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupFeedCell", for: indexPath) as? GroupFeedCell else {return UITableViewCell()}
-        let image = UIImage(named: "defaultProfileImage")
         let groupMessage = messageArray[indexPath.row]
-        DataService.instance.getUsername(forUID: groupMessage.senderId) { (returnedUsername) in
-            cell.configureCell(profileImage: image!, emailLbl: returnedUsername, messageContentLbl: groupMessage.content)
+        DataService.instance.getUsernameAndPhoto(forUID: groupMessage.senderId) { (returnedUsername, returnedProfilePhoto) in
+            // first check cache for image
+            if let cachedImage = imageCache.object(forKey: returnedProfilePhoto as AnyObject) as? UIImage {
+                cell.configureCell(profileImage: cachedImage, emailLbl: returnedUsername, messageContentLbl: groupMessage.content)
+            }
+            // otherwise download images
+            let url = URL(string: returnedProfilePhoto)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        if let downloadedImage = UIImage(data: data!) {
+                            imageCache.setObject(downloadedImage, forKey: returnedProfilePhoto as AnyObject)
+                            cell.configureCell(profileImage: downloadedImage, emailLbl: returnedUsername, messageContentLbl: groupMessage.content)
+                        }
+                    }
+                }
+                }.resume()
         }
         return cell
     }

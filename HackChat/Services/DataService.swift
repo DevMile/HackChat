@@ -82,10 +82,12 @@ class DataService {
         }
     }
     
-    func getUsername(forUID uid: String, handler: @escaping (_ username: String) -> ()) {
+    func getUsernameAndPhoto(forUID uid: String, handler: @escaping (_ username: String, _ profilePhoto: String) -> ()) {
         let query = REF_USERS.child(uid)
         query.observeSingleEvent(of: .value) { (userSnapshot) in
-            handler(userSnapshot.childSnapshot(forPath: "email").value as! String)
+            let email = userSnapshot.childSnapshot(forPath: "email").value as! String
+            let profilePhoto = userSnapshot.childSnapshot(forPath: "profile_pic").value as! String
+            handler(email, profilePhoto)
         }
     }
     
@@ -156,6 +158,21 @@ class DataService {
     func uploadProfilePicture(forUID uid: String, imageUrl: String, completion: @escaping (_ success: Bool) -> ()) {
         REF_USERS.child(uid).child("profile_pic").setValue(imageUrl)
         completion(true)
+    }
+    
+    func getUsers(handler: @escaping (_ usersArray: [User]) -> ()) {
+        var usersArray = [User]()
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let users = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            for user in users {
+                let email = user.childSnapshot(forPath: "email").value as! String
+                let profile_pic = user.childSnapshot(forPath: "profile_pic").value as! String
+                let userId = user.key
+                let user = User(email: email, profile_pic: profile_pic, userId: userId)
+                usersArray.append(user)
+            }
+            handler(usersArray)
+        }
     }
     
     

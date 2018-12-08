@@ -18,7 +18,8 @@ class AuthService {
                 userCreationComplete(false, error)
                 return
             }
-            let userData = ["provider": user.user.providerID, "email": user.user.email]
+            let defaultProfileImageUrl = "https://firebasestorage.googleapis.com/v0/b/hackchat-300a0.appspot.com/o/defaultProfileImage.png?alt=media&token=0a12fe97-9818-458b-b025-dbb871f1a9da"
+            let userData = ["provider": user.user.providerID, "email": user.user.email, "profile_pic": defaultProfileImageUrl]
             DataService.instance.createDBUser(userId: user.user.uid, userData: userData as Dictionary<String, Any>)
             userCreationComplete(true, nil)
         }

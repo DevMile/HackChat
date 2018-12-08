@@ -22,6 +22,8 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
         
     }
     
+    // TODO: - Make profile image load from database!!!!!!!!!!!!!!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         emailLbl.text = Auth.auth().currentUser?.email

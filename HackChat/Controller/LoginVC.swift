@@ -28,7 +28,7 @@ class LoginVC: UIViewController {
                 } else {
                     print(String(describing: loginError?.localizedDescription))
                 }
-                // if login failed - register user, then log him in
+                // if login failed - register user, then log him in - DEBUG THIS
                 AuthService.instance.registerUser(withEmail: self.emailTxtField.text!, andPassword: self.passwordTxtField.text!, userCreationComplete: { (success, registerError) in
                     if success {
                         AuthService.instance.loginUser(withEmail: self.emailTxtField.text!, andPassword: self.passwordTxtField.text!, loginComplete: { (success, nil) in
