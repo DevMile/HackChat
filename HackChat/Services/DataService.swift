@@ -125,8 +125,8 @@ class DataService {
             guard let users = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
             for user in users {
                 if group.members.contains(user.key) {
-                let email = user.childSnapshot(forPath: "email").value as! String
-                emailArray.append(email)
+                    let email = user.childSnapshot(forPath: "email").value as! String
+                    emailArray.append(email)
                 }
             }
             handler(emailArray)
@@ -160,16 +160,31 @@ class DataService {
         completion(true)
     }
     
-    func getUsers(handler: @escaping (_ usersArray: [User]) -> ()) {
+    func getUser(byUID uid: String, handler: @escaping (_ user: User) -> ()) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let users = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            for user in users {
+                if user.key == uid {
+                    let email = user.childSnapshot(forPath: "email").value as! String
+                    let profile_pic = user.childSnapshot(forPath: "profile_pic").value as! String
+                    let user = User(email: email, profile_pic: profile_pic, userId: user.key)
+                    handler(user)
+                }
+            }
+        }
+    }
+    
+    func getUsers(byEmails emails: [String], handler: @escaping (_ usersArray: [User]) -> ()) {
         var usersArray = [User]()
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
             guard let users = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
             for user in users {
                 let email = user.childSnapshot(forPath: "email").value as! String
-                let profile_pic = user.childSnapshot(forPath: "profile_pic").value as! String
-                let userId = user.key
-                let user = User(email: email, profile_pic: profile_pic, userId: userId)
-                usersArray.append(user)
+                if emails.contains(email) {
+                    let profile_pic = user.childSnapshot(forPath: "profile_pic").value as! String
+                    let user = User(email: email, profile_pic: profile_pic, userId: user.key)
+                    usersArray.append(user)
+                }
             }
             handler(usersArray)
         }

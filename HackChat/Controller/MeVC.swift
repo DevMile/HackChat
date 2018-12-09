@@ -13,20 +13,37 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
     
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var emailLbl: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var tableView: UITableView!    
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
-    // TODO: - Make profile image load from database!!!!!!!!!!!!!!
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         emailLbl.text = Auth.auth().currentUser?.email
+        DataService.instance.getUser(byUID: (Auth.auth().currentUser?.uid)!) { (returnedUser) in
+            // check cache for image first
+            if let cachedImage = imageCache.object(forKey: returnedUser.profile_pic as AnyObject) as? UIImage {
+                self.profileImg.maskCircle(anyImage: cachedImage)
+            }
+            // otherwise download images
+            let url = URL(string: returnedUser.profile_pic)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        if let downloadedImage = UIImage(data: data!) {
+                            imageCache.setObject(downloadedImage, forKey: returnedUser.profile_pic as AnyObject)
+                            self.profileImg.maskCircle(anyImage: downloadedImage)
+                        }
+                    }
+                }
+                }.resume()
+        }
     }
     
     @IBAction func signOutBtnPressed(_ sender: Any) {
@@ -115,7 +132,6 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
             }
         }
     }
-    
     
     
     

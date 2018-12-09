@@ -80,7 +80,7 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return emailArray.count
     }
-    
+    // SET PROFILE IMAGES IN CELL?????
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserCell else {return UITableViewCell()}
         let image = UIImage(named: "defaultProfileImage")

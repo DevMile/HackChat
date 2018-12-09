@@ -25,6 +25,28 @@ class CreatePostVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         emailLbl.text = Auth.auth().currentUser?.email
+        
+        DataService.instance.getUser(byUID: (Auth.auth().currentUser?.uid)!) { (returnedUser) in
+            // check cache for image first
+            if let cachedImage = imageCache.object(forKey: returnedUser.profile_pic as AnyObject) as? UIImage {
+                self.userImage.maskCircle(anyImage: cachedImage)
+            }
+            // otherwise download images
+            let url = URL(string: returnedUser.profile_pic)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        if let downloadedImage = UIImage(data: data!) {
+                            imageCache.setObject(downloadedImage, forKey: returnedUser.profile_pic as AnyObject)
+                            self.userImage.maskCircle(anyImage: downloadedImage)
+                        }
+                    }
+                }
+                }.resume()
+        }
     }
     
     @IBAction func sendBtnPressed(_ sender: Any) {
