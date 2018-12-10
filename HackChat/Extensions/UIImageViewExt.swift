@@ -34,14 +34,15 @@ extension UIImageView {
 //                print(error as Any)
 //                return
 //            } else {
-//                // insert this code into DispatchQueue - learn more about it and implement.
+//                DispatchQueue.main.async {
 //                    if let downloadedImage = UIImage(data: data!) {
 //                        imageCache.setObject(downloadedImage, forKey: urlString as AnyObject)
 //                        self.image = downloadedImage
 //                    }
+//                }
 //            }
-//        }.resume()
+//            }.resume()
 //    }
-  
+    
     
 }

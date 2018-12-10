@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class User {
     private var _email: String

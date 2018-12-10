@@ -19,6 +19,8 @@ class CreateGroupsVC: UIViewController {
     @IBOutlet weak var doneBtn: UIButton!
     var emailArray = [String]()
     var chosenGroupMembers = [String]()
+    var users = [User]()
+    var userProfilePicArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +42,23 @@ class CreateGroupsVC: UIViewController {
         } else {
             DataService.instance.getEmails(forSearchQuery: addMembersTxtField.text!) { (returnedEmailArray) in
                 self.emailArray = returnedEmailArray
-                self.tableView.reloadData()
+                DataService.instance.getUsers(byEmails: self.emailArray) { (returnedUsers) in
+                    for user in returnedUsers {
+                        let url = URL(string: user.profile_pic)
+                        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                            if error != nil {
+                                print(error as Any)
+                                return
+                            } else {
+                                    if let downloadedImage = UIImage(data: data!) {
+                                        self.userProfilePicArray.append(downloadedImage)
+                                }
+                            }
+                            // Put this into main thread but to wait until download fills the pic array?
+                            self.tableView.reloadData()
+                            }.resume()
+                    }
+                }
             }
         }
     }
@@ -83,11 +101,10 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
     // SET PROFILE IMAGES IN CELL?????
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserCell else {return UITableViewCell()}
-        let image = UIImage(named: "defaultProfileImage")
         if chosenGroupMembers.contains(emailArray[indexPath.row]) {
-            cell.configureCell(profileImage: image!, email: emailArray[indexPath.row], isSelected: true)
+            cell.configureCell(profileImage: userProfilePicArray[indexPath.row], email: emailArray[indexPath.row], isSelected: true)
         } else {
-            cell.configureCell(profileImage: image!, email: emailArray[indexPath.row], isSelected: false)
+            cell.configureCell(profileImage: userProfilePicArray[indexPath.row], email: emailArray[indexPath.row], isSelected: false)
         }
         return cell
     }
