@@ -91,17 +91,21 @@ class DataService {
         }
     }
     
-    func getEmails(forSearchQuery query: String, handler: @escaping (_ emailArray: [String]) -> ()) {
+    func getEmailsAndUsers(forSearchQuery query: String, handler: @escaping (_ emailArray: [String], _ usersArray: [User]) -> ()) {
         var emailArray = [String]()
+        var usersArray = [User]()
         REF_USERS.observe(.value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else {return}
             for user in userSnapshot {
                 let email = user.childSnapshot(forPath: "email").value as! String
+                let profile_pic = user.childSnapshot(forPath: "profile_pic").value as! String
                 if email.contains(query) && email != Auth.auth().currentUser?.email {
                     emailArray.append(email)
+                    let user = User(email: email, profile_pic: profile_pic, userId: user.key)
+                    usersArray.append(user)
                 }
             }
-            handler(emailArray)
+            handler(emailArray, usersArray)
         }
     }
     

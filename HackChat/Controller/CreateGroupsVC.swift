@@ -20,7 +20,6 @@ class CreateGroupsVC: UIViewController {
     var emailArray = [String]()
     var chosenGroupMembers = [String]()
     var users = [User]()
-    var userProfilePicArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,27 +37,13 @@ class CreateGroupsVC: UIViewController {
     @objc func searchMemberEmail() {
         if addMembersTxtField.text == "" {
             emailArray = []
+            users = []
             tableView.reloadData()
         } else {
-            DataService.instance.getEmails(forSearchQuery: addMembersTxtField.text!) { (returnedEmailArray) in
+            DataService.instance.getEmailsAndUsers(forSearchQuery: addMembersTxtField.text!) { (returnedEmailArray, returnedUsersArray) in
                 self.emailArray = returnedEmailArray
-                DataService.instance.getUsers(byEmails: self.emailArray) { (returnedUsers) in
-                    for user in returnedUsers {
-                        let url = URL(string: user.profile_pic)
-                        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                            if error != nil {
-                                print(error as Any)
-                                return
-                            } else {
-                                    if let downloadedImage = UIImage(data: data!) {
-                                        self.userProfilePicArray.append(downloadedImage)
-                                }
-                            }
-                            // Put this into main thread but to wait until download fills the pic array?
-                            self.tableView.reloadData()
-                            }.resume()
-                    }
-                }
+                self.users = returnedUsersArray
+                self.tableView.reloadData()
             }
         }
     }
@@ -98,13 +83,48 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return emailArray.count
     }
-    // SET PROFILE IMAGES IN CELL?????
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserCell else {return UITableViewCell()}
+        // FIX UNEXPECTED CRASHES BECAUSE INDEX OUT OF RANGE !!!!
         if chosenGroupMembers.contains(emailArray[indexPath.row]) {
-            cell.configureCell(profileImage: userProfilePicArray[indexPath.row], email: emailArray[indexPath.row], isSelected: true)
+            // check cache for image first
+            if let cachedImage = imageCache.object(forKey: users[indexPath.row].profile_pic as AnyObject) as? UIImage {
+                cell.configureCell(profileImage: cachedImage, email: self.emailArray[indexPath.row], isSelected: true)
+            }
+            // otherwise download images
+            let url = URL(string: users[indexPath.row].profile_pic)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    DispatchQueue.main.async {
+                        if let downloadedImage = UIImage(data: data!) {
+                            imageCache.setObject(downloadedImage, forKey: self.users[indexPath.row].profile_pic as AnyObject)
+                            cell.configureCell(profileImage: downloadedImage, email: self.emailArray[indexPath.row], isSelected: true)
+                        }
+                    }
+                }
+                }.resume()
         } else {
-            cell.configureCell(profileImage: userProfilePicArray[indexPath.row], email: emailArray[indexPath.row], isSelected: false)
+            // check cache for image first
+            if let cachedImage = imageCache.object(forKey: users[indexPath.row].profile_pic as AnyObject) as? UIImage {
+                cell.configureCell(profileImage: cachedImage, email: self.emailArray[indexPath.row], isSelected: false)
+            }
+            // otherwise download images
+            let url = URL(string: users[indexPath.row].profile_pic)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    DispatchQueue.main.async {
+                        if let downloadedImage = UIImage(data: data!) {
+                            imageCache.setObject(downloadedImage, forKey: self.users[indexPath.row].profile_pic as AnyObject)
+                            cell.configureCell(profileImage: downloadedImage, email: self.emailArray[indexPath.row], isSelected: false)
+                        }
+                    }
+                }
+                }.resume()
         }
         return cell
     }
