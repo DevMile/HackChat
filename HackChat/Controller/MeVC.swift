@@ -19,7 +19,7 @@ class MeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationContr
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-        
+        // NOT REFRESHING CHOSEN PICTURE WHEN SET IT FOR THE FIRST TIME !!!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         emailLbl.text = Auth.auth().currentUser?.email

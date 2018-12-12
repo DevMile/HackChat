@@ -86,7 +86,7 @@ extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserCell else {return UITableViewCell()}
-        // FIX UNEXPECTED CRASHES BECAUSE INDEX OUT OF RANGE !!!!
+        // FIX UNEXPECTED CRASHES when typing too fast BECAUSE INDEX OUT OF RANGE !!!!
         if chosenGroupMembers.contains(emailArray[indexPath.row]) {
             // check cache for image first
             if let cachedImage = imageCache.object(forKey: users[indexPath.row].profile_pic as AnyObject) as? UIImage {

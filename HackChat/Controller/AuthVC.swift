@@ -28,4 +28,10 @@ class AuthVC: UIViewController {
         present(loginVC!, animated: true, completion: nil)
     }
     
+    @IBAction func loginWithFacebook(_ sender: Any) {
+    }
+    
+    @IBAction func loginWithGoogle(_ sender: Any) {
+    }
+    
 }
